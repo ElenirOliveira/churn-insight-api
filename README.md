@@ -9,6 +9,7 @@ Este repositório contém a primeira versão funcional da API, incluindo:
 * Modelo de predição mockado
 * Regras iniciais de cálculo no utilitário `PredictionUtils`
 * Swagger UI para testes rápidos
+* Estrutura para geração de dataset sintético
 
 ---
 
@@ -21,6 +22,7 @@ Este repositório contém a primeira versão funcional da API, incluindo:
 * MapStruct
 * Lombok
 * Swagger (Springdoc OpenAPI)
+* Python (para geração do dataset)
 
 ---
 
@@ -34,6 +36,12 @@ src/main/java/com/churninsight/api
 ├── model             → PredictionModel
 ├── service           → PredictionService
 └── util              → PredictionUtils
+
+data/
+├── .gitkeep
+└── scripts/
+    ├── call_dataset_churn.py
+    └── .gitkeep
 ```
 
 Arquitetura simples, modular e preparada para evolução pelo time.
@@ -73,20 +81,84 @@ Envia dados de um cliente e recebe uma previsão calculada com base nas regras m
 
 ## 📊 Regras de Cálculo (MVP)
 
-A lógica atual está centralizada em `PredictionUtils` e serve apenas como **versão inicial para ajustes do time**.
+A lógica inicial está centralizada em `PredictionUtils` e serve como **baseline para o time ajustar e evoluir**.
 
-Cada atributo contribui positiva ou negativamente para um score, que é normalizado entre **0 e 1**.
+Cada atributo contribui com pesos positivos ou negativos para um *score*, normalizado entre **0 e 1**.
 
-Esta camada é facilmente substituível por:
+Essa camada poderá futuramente ser substituída por:
 
-* Modelo de Machine Learning real
+* Modelo real de Machine Learning
 * Integração com Python
-* Microserviço de predição
+* Microserviço dedicado à predição
 * Ajustes manuais da equipe de Data Science
 
 ---
 
-## 🔧 Como Executar
+## 🧁 Dataset Sintético (para Data Science)
+
+O projeto inclui uma estrutura destinada à geração de dataset fictício com **10.000 clientes**, usado para análises exploratórias (EDA), engenharia de atributos e modelagem supervisionada.
+
+### 📁 Estrutura
+
+```
+data/
+├── .gitkeep
+└── scripts/
+    ├── call_dataset_churn.py
+    └── .gitkeep
+```
+
+O CSV gerado **não é versionado**, para evitar arquivos grandes no repositório.
+
+---
+
+### 📄 Sobre o Script `call_dataset_churn.py`
+
+O script gera dados sintéticos contendo:
+
+**Dados do cliente**
+
+* `name`, `age`, `city`, `state`
+* `signup_date`
+
+**Comportamento**
+
+* `monthly_usage`
+* `logins_per_month`
+* `device_type`
+* `plan_type`
+
+**Pagamentos**
+
+* `payment_delays`
+* `late_payments_last_6m`
+* `on_time_payment_ratio`
+
+**Atributos para ML**
+
+* `churn` (0 ou 1)
+* `churn_probability` (score calculado)
+
+---
+
+### ▶️ Como gerar o dataset
+
+No terminal:
+
+```bash
+cd data/scripts
+python call_dataset_churn.py
+```
+
+O arquivo será gerado automaticamente em:
+
+```
+data/churn_customers_dataset.csv
+```
+
+---
+
+## 🔧 Como Executar a API
 
 ```bash
 mvn spring-boot:run
@@ -115,7 +187,22 @@ http://localhost:8080/swagger-ui.html
 http://localhost:8080/api/predict
 ```
 
-3. Envie o JSON demonstrado anteriormente.
+3. Envie o JSON de exemplo.
+
+---
+
+## 🤝 Contribuição do Time
+
+Este projeto foi iniciado para o Hackathon ONE e será evoluído em equipe.
+
+Contribuições bem-vindas:
+
+* Ajustes nas regras de churn
+* Evolução do modelo de predição
+* Refatorações de arquitetura
+* Criação de testes automatizados
+* Expansão do dataset
+* Implementação de ML real
 
 ---
 
