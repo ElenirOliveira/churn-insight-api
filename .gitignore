@@ -1,33 +1,102 @@
+#############################
+# JAVA / MAVEN / SPRINGBOOT
+#############################
+
 HELP.md
 target/
 .mvn/wrapper/maven-wrapper.jar
+
+# Exceções do Maven para permitir build dentro de src (raro, mas seguro)
 !**/src/main/**/target/
 !**/src/test/**/target/
 
-### STS ###
-.apt_generated
-.classpath
-.factorypath
-.project
-.settings
-.springBeans
-.sts4-cache
+# Logs
+*.log
+
+#############################
+# IDEs
+#############################
 
 ### IntelliJ IDEA ###
-.idea
-*.iws
+.idea/
 *.iml
+*.iws
 *.ipr
-
-### NetBeans ###
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
-build/
-!**/src/main/**/build/
-!**/src/test/**/build/
 
 ### VS Code ###
 .vscode/
+
+### Eclipse / STS ###
+.apt_generated/
+.factorypath
+.project
+.settings/
+.springBeans
+.sts4-cache
+
+#############################
+# PYTHON
+#############################
+
+# Cache do Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pyd
+*.pkl
+*.pickle
+
+# Ambientes virtuais
+venv/
+.env/
+.envrc
+.venv/
+env/
+
+#############################
+# NOTEBOOKS (Jupyter / Colab)
+#############################
+
+# Auto-saves e checkpoints de notebooks
+.ipynb_checkpoints/
+**/.ipynb_checkpoints/
+
+# Arquivos de notebook temporários
+*.ipynb_check*
+*.nbconvert.ipynb
+
+#############################
+# DATASETS (CSV, XLSX, PARQUET)
+#############################
+
+# Evitar versionar datasets pesados
+*.csv
+*.csv.*
+*.xlsx
+*.xls
+*.parquet
+
+# Mas permitir manter pastas vazias com .gitkeep
+!data/.gitkeep
+!data/scripts/.gitkeep
+
+#############################
+# SISTEMA / LINUX / MISC
+#############################
+
+.DS_Store
+Thumbs.db
+
+#############################
+# BUILD / DIST
+#############################
+
+dist/
+build/
+nbbuild/
+nbdist/
+nbproject/private/
+
+!**/src/main/**/build/
+!**/src/test/**/build/
