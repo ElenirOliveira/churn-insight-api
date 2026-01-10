@@ -207,3 +207,124 @@ Contribuições bem-vindas:
 ---
 
 
+README TÉCNICO — ENGENHARIA DE DADOS
+
+
+📊 Churn Insight — Pipeline de Engenharia de Dados
+📌 Visão Geral
+
+Este projeto implementa um pipeline completo de engenharia de dados para tratamento, padronização e preparação de dados de churn de clientes de telecomunicações, com foco em qualidade, governança e preparo para machine learning e consumo analítico.
+
+🗂️ Fonte dos Dados
+
+Dataset público: Telco Customer Churn
+
+Origem: CSV hospedado em repositório GitHub
+
+Ingestão direta via pandas.read_csv()
+
+🏗️ Arquitetura do Pipeline
+Ingestão (CSV)
+   ↓
+Padronização de colunas
+   ↓
+Tradução e normalização de valores
+   ↓
+Tratamento de tipos e nulos
+   ↓
+Feature Engineering
+   ↓
+Preparação para ML
+   ↓
+Exportação do dataset tratado
+
+🔧 Tecnologias Utilizadas
+
+Python 3
+
+Pandas
+
+NumPy
+
+Scikit-learn
+
+Matplotlib / Seaborn (exploração)
+
+🧹 Etapas de Tratamento dos Dados
+✔️ Padronização
+
+Normalização de nomes de colunas (snake_case)
+
+Remoção de acentos e caracteres especiais
+
+Padronização de strings (lowercase)
+
+✔️ Qualidade
+
+Conversão explícita de colunas numéricas
+
+Tratamento de valores nulos
+
+Remoção de registros duplicados
+
+Validação de tipos
+
+✔️ Feature Engineering
+
+Criação de ticket_medio
+
+Criação de cliente_novo
+
+Mapeamento da variável target (evasao)
+
+🧠 Preparação para Machine Learning
+
+Separação de features e target
+
+Identificação automática de colunas categóricas e numéricas
+
+Pipeline com:
+
+StandardScaler para variáveis numéricas
+
+OneHotEncoder para categóricas
+
+LogisticRegression como modelo base
+
+📁 Saída do Pipeline
+
+Arquivo final gerado:
+
+churn_telco_dados_tratados.csv
+
+
+Dataset limpo, modelado e pronto para:
+
+Machine Learning
+
+Dashboards analíticos
+
+APIs de inferência
+
+Camadas Silver / Gold
+
+🔐 Governança de Dados
+
+Dados anonimizados para fins analíticos
+
+Padronização consistente de schema
+
+Pipeline reprodutível e versionável
+
+Pronto para integração com ambientes corporativos
+
+🚀 Próximos Passos
+
+Integração com Data Lake / Lakehouse
+
+Versionamento de dados
+
+Monitoramento de qualidade
+
+Deploy em ambiente cloud (Azure / Databricks)
+
