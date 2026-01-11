@@ -206,125 +206,169 @@ Contribuições bem-vindas:
 
 ---
 
+# 🧠 Churn Insight — Engenharia de Dados
 
-README TÉCNICO — ENGENHARIA DE DADOS
+Pipeline de **Engenharia de Dados em Python** desenvolvido no contexto do **Hackathon ONE**, responsável por realizar o tratamento, padronização, modelagem e preparação dos dados de churn de clientes de telecomunicações.
 
+Este repositório contém a versão inicial do pipeline de dados, incluindo:
 
-📊 Churn Insight — Pipeline de Engenharia de Dados
-📌 Visão Geral
+- Ingestão de dados a partir de CSV público
+- Padronização de schema e valores categóricos
+- Tratamento de dados inconsistentes e valores nulos
+- Feature engineering orientado a churn
+- Preparação dos dados para Machine Learning
+- Exportação de dataset final limpo e modelado
 
-Este projeto implementa um pipeline completo de engenharia de dados para tratamento, padronização e preparação de dados de churn de clientes de telecomunicações, com foco em qualidade, governança e preparo para machine learning e consumo analítico.
+---
 
-🗂️ Fonte dos Dados
+## 🚀 Tecnologias Utilizadas
 
-Dataset público: Telco Customer Churn
+- Python 3
+- Pandas
+- NumPy
+- Scikit-learn
+- Matplotlib
+- Seaborn
 
-Origem: CSV hospedado em repositório GitHub
+---
 
-Ingestão direta via pandas.read_csv()
+## 🗂️ Fonte dos Dados
 
-🏗️ Arquitetura do Pipeline
-Ingestão (CSV)
-   ↓
-Padronização de colunas
-   ↓
-Tradução e normalização de valores
-   ↓
-Tratamento de tipos e nulos
-   ↓
-Feature Engineering
-   ↓
-Preparação para ML
-   ↓
-Exportação do dataset tratado
+- Dataset público: **Telco Customer Churn**
+- Origem: arquivo CSV hospedado em repositório GitHub
+- Ingestão realizada via `pandas.read_csv()`
 
-🔧 Tecnologias Utilizadas
+Os dados utilizados não contêm informações sensíveis diretas e são tratados para uso analítico e preditivo.
 
-Python 3
+---
 
-Pandas
+## 🏗️ Arquitetura do Projeto
 
-NumPy
+    flowchart LR
+    A[📂 Dataset Público<br/>Telco Customer Churn CSV]
+    B[⚙️ Pipeline de Engenharia de Dados<br/>Python / Pandas]
+    B1[Padronização de Schema]
+    B2[Tratamento de Nulos e Tipos]
+    B3[Feature Engineering]
+    B4[Dataset Final Tratado<br/>churn_telco_dados_tratados.csv]
 
-Scikit-learn
+    C[📊 Power BI<br/>Dashboard Analítico]
+    C1[Página 1<br/>Visão Executiva de Churn]
+    C2[Página 2<br/>Análise de Perfil e Comportamento]
 
-Matplotlib / Seaborn (exploração)
+    D[🧠 Churn Insight API<br/>Java / Spring Boot]
+    D1[Endpoint /api/predict]
+    D2[Regras de Negócio / Modelo Base]
+    D3[Swagger UI]
+
+    E[🤖 Evolução Futura<br/>Modelo de Machine Learning]
+
+    A --> B
+    B --> B1 --> B2 --> B3 --> B4
+    B4 --> C
+    B4 --> D
+    D --> E
+
+Este diagrama representa o fluxo completo do projeto, desde a ingestão dos dados até o consumo analítico e preditivo, seguindo boas práticas de engenharia de dados, governança e separação de responsabilidades.
+
+---
 
 🧹 Etapas de Tratamento dos Dados
 ✔️ Padronização
 
-Normalização de nomes de colunas (snake_case)
+* Normalização de nomes de colunas (snake_case)
 
-Remoção de acentos e caracteres especiais
+* Remoção de acentos e caracteres especiais
 
-Padronização de strings (lowercase)
+* Padronização de valores textuais (lowercase)
 
-✔️ Qualidade
+✔️ Qualidade dos Dados
 
-Conversão explícita de colunas numéricas
+* Conversão explícita de colunas numéricas
 
-Tratamento de valores nulos
+* Tratamento de valores nulos
 
-Remoção de registros duplicados
+* Remoção de registros duplicados por chave natural
 
-Validação de tipos
+* Validação de tipos e consistência do schema
 
 ✔️ Feature Engineering
 
-Criação de ticket_medio
+* Criação da variável ticket_medio
 
-Criação de cliente_novo
+* Criação da variável cliente_novo
 
-Mapeamento da variável target (evasao)
+* Mapeamento da variável target evasao (0 / 1)
+
+---
 
 🧠 Preparação para Machine Learning
 
-Separação de features e target
+O pipeline realiza a preparação completa dos dados para modelagem, incluindo:
 
-Identificação automática de colunas categóricas e numéricas
+* Separação entre features e variável target
 
-Pipeline com:
+* Identificação automática de colunas numéricas e categóricas
 
-StandardScaler para variáveis numéricas
+* Pipeline de pré-processamento com:
 
-OneHotEncoder para categóricas
+ * StandardScaler para variáveis numéricas
 
-LogisticRegression como modelo base
+ * OneHotEncoder para variáveis categóricas
+
+* Modelo baseline com LogisticRegression
+
+Essa estrutura permite fácil substituição ou evolução do modelo.
+
+---
 
 📁 Saída do Pipeline
 
-Arquivo final gerado:
+O pipeline gera um dataset final tratado e modelado:
 
-churn_telco_dados_tratados.csv
+  churn_telco_dados_tratados.csv
 
+Este arquivo está pronto para uso em:
 
-Dataset limpo, modelado e pronto para:
+* Modelos de Machine Learning
 
-Machine Learning
+* Dashboards analíticos (Power BI)
 
-Dashboards analíticos
+* APIs de inferência
 
-APIs de inferência
+* Camadas Silver / Gold em arquiteturas de dados
 
-Camadas Silver / Gold
+---
 
 🔐 Governança de Dados
 
-Dados anonimizados para fins analíticos
+O pipeline segue princípios fundamentais de governança:
 
-Padronização consistente de schema
+* Padronização consistente de schema
 
-Pipeline reprodutível e versionável
+* Dados anonimizados para fins analíticos
 
-Pronto para integração com ambientes corporativos
+* Pipeline reprodutível e versionável
+
+* Separação clara entre ingestão, transformação e saída
+
+* Preparado para integração com ambientes corporativos
+
+---
 
 🚀 Próximos Passos
 
-Integração com Data Lake / Lakehouse
+* Integração com Data Lake / Lakehouse
 
-Versionamento de dados
+* Versionamento de dados
 
-Monitoramento de qualidade
+* Monitoramento de qualidade e consistência
 
-Deploy em ambiente cloud (Azure / Databricks)
+* Deploy em ambiente cloud (Oci / Databricks)
+
+* Evolução para arquitetura Bronze / Silver / Gold
+
+
+---
+
 
